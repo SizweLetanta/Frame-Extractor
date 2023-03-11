@@ -1,4 +1,4 @@
-#include "frame_module.h"
+#include "frame_sequence.h"
 #define FMOD LTNSIZ001::FrameSequence
 
 FMOD::FrameSequence(void): width(0), height(0){}

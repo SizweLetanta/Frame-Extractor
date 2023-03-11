@@ -1,5 +1,5 @@
-#ifndef FMODULE_H_
-#define FMODULE_H_
+#ifndef FRAME_MODULE_H_
+#define FRAME_MODULE_H_
 #include <vector>
 #include "image.h"
 
