@@ -8,7 +8,7 @@ namespace LTNSIZ001
 {
     class Image{
     private:
-        u_char* pixels;
+        char* pixels;
         int width, height;
     public:
         /*
