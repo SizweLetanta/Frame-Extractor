@@ -17,6 +17,7 @@ namespace LTNSIZ001
 
     dims get_dimensions(std::ifstream* infile);
 
+    std::vector<position> get_coordinates(position start, position end);
 } // namespace LTNSIZ001
 
 
