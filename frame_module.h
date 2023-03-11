@@ -1,0 +1,37 @@
+#ifndef FMODULE_H_
+#define FMODULE_H_
+#include <vector>
+#include "image.h"
+
+namespace LTNSIZ001 {
+
+	class FrameSequence {
+	private:
+		std::vector<u_char**> imageSequence;
+		int width, height;
+	public:
+		FrameSequence(void);
+
+		/*
+		 * For accessing a frame from the vector.
+		 */
+        u_char** operator[](int frameNo);
+
+		/*
+		 * For adding a frame to the vector.
+		 */
+		FrameSequence operator+=(u_char** frame);
+
+		/*
+		 * Sets the width and height of the frames
+		 */
+		void set_size(int width, int height);
+
+		/*
+		 * Destroys the object and frees up memory.
+		 */
+		~FrameSequence();
+	};
+
+}  // namespace LTNSIZ001
+#endif
