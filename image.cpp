@@ -16,3 +16,20 @@ IMG::~Image(){
     delete[] pixels;
 }
 
+u_char** IMG::get_frame(int start_x, int start_y, int width, int height){
+    u_char** frame = new u_char*[height];
+
+    for (int y = 0; y < height; y++)
+    {
+        u_char* row = new u_char[width];
+        for (int x = 0; x < width; x++)
+        {
+            row[x] = pixels[y]+x;
+        }
+        
+        frame[y] = row;
+    }
+
+    return frame;
+    
+}
