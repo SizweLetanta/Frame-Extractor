@@ -11,15 +11,25 @@ namespace LTNSIZ001
         int x, y;
     };
 
-    struct dims{
+    struct dimension{
         int width, height;
     };
 
-    dims get_dimensions(std::ifstream* infile);
+    struct options{
+        std::string opt, file_name;
+    };
+
+    struct parameters{
+        position origin, destination;
+        dimension size;
+        std::vector<options> opts;
+    };
+
+    dimension get_dimensions(std::ifstream* infile);
 
     std::vector<position> get_coordinates(position start, position end);
 
-    void write_image(std::string file_name, u_char** pixels, dims dimensions);
+    void write_image(std::string file_name, u_char** pixels, dimension dimensions);
 } // namespace LTNSIZ001
 
 
