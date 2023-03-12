@@ -26,7 +26,7 @@ namespace LTNSIZ001 {
 		 * Returns a width * height unsigned char array of an image starting from
 		 * (start_x, start_y)
 		 */
-		u_char** get_frame(int start_x, int start_y, int width, int height);
+		u_char** get_frame(int start_r, int start_c, int width, int height);
 
 		/*
 		 * Returns a pointer to a pixel at the first column of the given row.

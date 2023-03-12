@@ -20,7 +20,7 @@ namespace LTNSIZ001 {
 		/*
 		 * For adding a frame to the vector.
 		 */
-		FrameSequence operator+=(u_char** frame);
+		FrameSequence& operator+=(u_char** frame);
 
 		/*
 		 * Sets the width and height of the frames

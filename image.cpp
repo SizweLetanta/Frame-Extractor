@@ -5,7 +5,7 @@ IMG::Image(int width, int height)
 	: width(width), height(height), pixels(nullptr) {}
 
 u_char* IMG::operator[](int y) {
-	return (u_char*)pixels + (y * width);
+	return (u_char*) (pixels + (y * width));
 }
 
 int IMG::get_height() {
@@ -20,13 +20,13 @@ IMG::~Image() {
 	delete[] pixels;
 }
 
-u_char** IMG::get_frame(int start_x, int start_y, int width, int height) {
-	u_char** frame = new u_char*[height];
+u_char** IMG::get_frame(int start_r, int start_c, int f_width, int f_height) {
+	u_char** frame = new u_char*[f_height];
 
-	for (int y = 0; y < height; y++) {
-		u_char* row = new u_char[width];
-		for (int x = 0; x < width; x++) {
-			row[x] = (*this)[y][x];
+	for (int y = 0; y < f_height; y++) {
+		u_char* row = new u_char[f_width];
+		for (int x = 0; x < f_width; x++) {
+			row[x] = (*this)[start_r+y][start_c+x];
 		}
 
 		frame[y] = row;

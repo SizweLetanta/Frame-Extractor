@@ -18,6 +18,8 @@ namespace LTNSIZ001
     dims get_dimensions(std::ifstream* infile);
 
     std::vector<position> get_coordinates(position start, position end);
+
+    void write_image(std::string file_name, u_char** pixels, dims dimensions);
 } // namespace LTNSIZ001
 
 

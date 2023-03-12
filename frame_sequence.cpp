@@ -7,7 +7,7 @@ u_char** FMOD::operator[](int frameNo){
     return imageSequence[frameNo];
 }
 
-FMOD FMOD::operator+=(u_char** frame){
+FMOD& FMOD::operator+=(u_char** frame){
     imageSequence.push_back(frame);
     return *this;
 }
