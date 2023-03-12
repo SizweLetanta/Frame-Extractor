@@ -66,10 +66,6 @@ void LTNSIZ001::write_image(std::string file_name, u_char** pixels, LTNSIZ001::d
 	image_file.write(outstr, outs.length());
 	for (int row = 0; row < dimensions.height; ++row) {
 		image_file.write((char*)pixels[row], dimensions.width);
-		for (int i = 0; i < dimensions.width; ++i) {
-			std::cout << (int)pixels[row][i] << " ";
-		}
-		std::cout << "\n";
 	}
 	image_file.close();
 }
@@ -88,7 +84,7 @@ LTNSIZ001::parameters LTNSIZ001::get_parameters(const char* args[], int argc) {
 	int t = find(args, argc, "-t");
 	pars.origin = position{std::atoi(args[t + 1]),std::atoi(args[t + 2])};
 	pars.destination = position{std::atoi(args[t + 3]), std::atoi(args[t + 4])};
-	int s = find(args, argc, "-p");
+	int s = find(args, argc, "-s");
 	pars.size = dimension{std::atoi(args[s + 1]), std::atoi(args[s + 2])};
 
 	int w = find(args, argc, "-w");

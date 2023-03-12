@@ -13,7 +13,7 @@ LTNSIZ001::dimension IMG::get_dimensions(){
 }
 
 IMG::~Image() {
-	delete[] pixels;
+	// delete[] pixels;
 }
 
 u_char** IMG::get_frame(position start, dimension dims) {
