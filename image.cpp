@@ -1,32 +1,28 @@
 #include "image.h"
 #define IMG LTNSIZ001::Image
 
-IMG::Image(int width, int height)
-	: width(width), height(height), pixels(nullptr) {}
+IMG::Image(dimension dimensions)
+	: image_dims(dimensions), pixels(nullptr) {}
 
 u_char* IMG::operator[](int y) {
-	return (u_char*) (pixels + (y * width));
+	return (u_char*) (pixels + (y * image_dims.width));
 }
 
-int IMG::get_height() {
-	return height;
-}
-
-int IMG::get_width() {
-	return width;
+LTNSIZ001::dimension IMG::get_dimensions(){
+	return image_dims;
 }
 
 IMG::~Image() {
 	delete[] pixels;
 }
 
-u_char** IMG::get_frame(int start_r, int start_c, int f_width, int f_height) {
-	u_char** frame = new u_char*[f_height];
+u_char** IMG::get_frame(position start, dimension dims) {
+	u_char** frame = new u_char*[dims.height];
 
-	for (int y = 0; y < f_height; y++) {
-		u_char* row = new u_char[f_width];
-		for (int x = 0; x < f_width; x++) {
-			row[x] = (*this)[start_r+y][start_c+x];
+	for (int y = 0; y < dims.height; y++) {
+		u_char* row = new u_char[dims.width];
+		for (int x = 0; x < dims.width; x++) {
+			row[x] = (*this)[start.y+y][start.x+x];
 		}
 
 		frame[y] = row;
@@ -36,6 +32,7 @@ u_char** IMG::get_frame(int start_r, int start_c, int f_width, int f_height) {
 }
 
 void IMG::load_image(std::ifstream* file) {
-	pixels = new char[width * height];
-	file->read(pixels, width * height);
+	int pixel_count = image_dims.width * image_dims.height;
+	pixels = new char[pixel_count];
+	file->read(pixels, pixel_count);
 }

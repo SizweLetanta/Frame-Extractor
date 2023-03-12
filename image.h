@@ -2,19 +2,20 @@
 #define IMAGE_H_
 
 #include <fstream>
+#include "useful_structs.h"
 typedef unsigned char u_char;
 
 namespace LTNSIZ001 {
 	class Image {
 	private:
 		char* pixels;
-		int width, height;
+		dimension image_dims;
 
 	public:
 		/*
 		 * Creates an image object without any pixels
 		 */
-		Image(int width, int height);
+		Image(dimension dimensions);
 
 		/*
 		 * loads pixel data into the image from an ifstream object. Assumes that the
@@ -26,7 +27,7 @@ namespace LTNSIZ001 {
 		 * Returns a width * height unsigned char array of an image starting from
 		 * (start_x, start_y)
 		 */
-		u_char** get_frame(int start_r, int start_c, int width, int height);
+		u_char** get_frame(position start, dimension dims);
 
 		/*
 		 * Returns a pointer to a pixel at the first column of the given row.
@@ -36,12 +37,7 @@ namespace LTNSIZ001 {
 		/*
 		 * Returns the width of the image
 		 */
-		int get_width();
-
-		/*
-		 * Returns the width of the image
-		 */
-		int get_height();
+		dimension get_dimensions();
 
 		~Image();
 	};

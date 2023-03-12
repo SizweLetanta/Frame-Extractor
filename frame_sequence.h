@@ -8,7 +8,7 @@ namespace LTNSIZ001 {
 	class FrameSequence {
 	private:
 		std::vector<u_char**> imageSequence;
-		int width, height;
+		dimension size;
 	public:
 		FrameSequence(void);
 
@@ -25,7 +25,7 @@ namespace LTNSIZ001 {
 		/*
 		 * Sets the width and height of the frames
 		 */
-		void set_size(int width, int height);
+		void set_size(dimension &size);
 
 		/*
 		 * Destroys the object and frees up memory.
