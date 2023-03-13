@@ -16,13 +16,14 @@ IMG::~Image() {
 	// delete[] pixels;
 }
 
-u_char** IMG::get_frame(position start, dimension dims) {
+u_char** IMG::get_frame(position start, dimension dims, bool invert) {
 	u_char** frame = new u_char*[dims.height];
 
 	for (int y = 0; y < dims.height; y++) {
 		u_char* row = new u_char[dims.width];
 		for (int x = 0; x < dims.width; x++) {
-			row[x] = (*this)[start.y+y][start.x+x];
+			bool over_bounds = start.y+y >= image_dims.height || start.x+x >= image_dims.width;
+			row[x] = (over_bounds ? 0 :(invert ? 255 - (*this)[start.y+y][start.x+x] : (*this)[start.y+y][start.x+x]));
 		}
 
 		frame[y] = row;
