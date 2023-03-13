@@ -10,6 +10,13 @@ int main(int argc, char const* argv[]) {
 	// LTNSIZ001::parameters args = LTNSIZ001::get_parameters(argv, argc);
 	std::ifstream image_file(params.in_file, std::ios::binary);
 
+    if (!image_file)
+    {
+        std::cout << "Could not find the image" << "\n";
+        return 1;
+    }
+    
+
 	LTNSIZ001::dimension dimensions = LTNSIZ001::get_dimensions(&image_file);
 
 	LTNSIZ001::Image main_image(dimensions);
